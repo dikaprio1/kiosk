@@ -35,22 +35,22 @@ public class Menu {
     }
     //선택된 대분류의 모든 소분류 출력 ------------------------------------------------------------
     public void printAllMenuItem(int input){
-        int j = 1;
-        for(int i=0;i<menuItems.size();i++){
-            if(input == menuItems.get(i).getProductNum()){
-                if(j==1){
-                    System.out.println("["+menuCategory.get(i).getName()+" MENU]");
+            int j = 1;
+            for(int i=0;i<menuItems.size();i++){
+                if(input == menuItems.get(i).getProductNum()){
+                    if(j==1){
+                        System.out.println("["+menuCategory.get(i).getName()+" MENU]");
+                    }
+                    System.out.println(j+". "+menuItems.get(i));
+                    addTmpMenuItems(menuItems.get(i));
+                    j++;
                 }
-                System.out.println(j+". "+menuItems.get(i));
-                addTmpMenuItems(menuItems.get(i));
-                j++;
             }
-        }
         System.out.println("0. 뒤로가기");
     }
     //선택된 소분류 출력 ------------------------------------------------------------
-    public void printMenuItem(int input){
-            System.out.println(tmpMenuItems.get(input-1));
+    public MenuItem printMenuItem(int input){
+           return tmpMenuItems.get(input-1);
     }
 
     //게터 세터 ------------------------------------------------------------

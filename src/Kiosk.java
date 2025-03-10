@@ -25,27 +25,38 @@ public class Kiosk {
             int input = 0;
             try {
                 input = sc.nextInt();
+                if(input == 0){
+                    System.exit(0);
+                }else if(input > menu.getMenuCategory().size()){
+                    System.out.println("지정되어있는 숫자를 입력해주세요");
+                    continue;
+                }else if(menu.getMenuCategory().isEmpty()){
+                    System.out.println("카테고리가 없습니다.");
+                }
             } catch (InputMismatchException e) {
                 System.out.println("지정되어있는 숫자를 입력해주세요");
                 continue;
             }
-            if(input == 0){
-                System.exit(0);
-            }
                 while(true){
-                     menu.printAllMenuItem(input);
-                     input = 0;
-                     try {
-                        input = sc.nextInt();
+                    menu.getTmpMenuItems().clear();
+                    menu.printAllMenuItem(input);
+                    int input2 = 0;
+                    try {
+                         input2 = sc.nextInt();
                     } catch (InputMismatchException e) {
                         System.out.println("지정되어있는 숫자를 입력해주세요");
                         continue;
                     }
-                    if(input == 0){
+                    if(input2 == 0){
                         continue firstroop;
                     }
-                    System.out.println("선택된 음식 :");
-                    menu.printMenuItem(input);
+                    try{
+                        MenuItem m = menu.printMenuItem(input2);
+                        System.out.println("선택된 음식 : "+m);
+                    } catch(IndexOutOfBoundsException e){
+                        System.out.println("지정되어있는 숫자를 입력해주세요");
+                        continue;
+                    }
                     continue firstroop;
                 }
         }
