@@ -14,8 +14,9 @@ public class Kiosk {
         return menu;
     }
 
-    public static void start(Menu menu){
-        while(true) {
+    public void start(Menu menu){
+        firstroop :while(true) {
+            menu.getTmpMenuItems().clear();
             Scanner sc = new Scanner(System.in);
             System.out.println("[SHAKESHACK MENU]");
             menu.printAllMenuCategory();
@@ -28,7 +29,9 @@ public class Kiosk {
                 System.out.println("지정되어있는 숫자를 입력해주세요");
                 continue;
             }
-            exitcheck(input);
+            if(input == 0){
+                System.exit(0);
+            }
                 while(true){
                      menu.printAllMenuItem(input);
                      input = 0;
@@ -38,19 +41,13 @@ public class Kiosk {
                         System.out.println("지정되어있는 숫자를 입력해주세요");
                         continue;
                     }
-                     backcheck(menu,input);
-                 }
-        }
-    }
-
-    public static void exitcheck(int input){
-        if(input == 0){
-            System.exit(0);
-        }
-    }
-    public static void backcheck(Menu menu,int input){
-        if(input == 0){
-            start(menu);
+                    if(input == 0){
+                        continue firstroop;
+                    }
+                    System.out.println("선택된 음식 :");
+                    menu.printMenuItem(input);
+                    continue firstroop;
+                }
         }
     }
 }
