@@ -18,7 +18,7 @@ public class Kiosk {
         firstroop :while(true) {
             menu.getTmpMenuItems().clear();
             Scanner sc = new Scanner(System.in);
-            System.out.println("[SHAKESHACK MENU]");
+            System.out.println("[MAIN MENU]");
             menu.printAllMenuCategory();
             System.out.println("0. 종료");
             System.out.println("원하는 메뉴 번호 입력 :");
