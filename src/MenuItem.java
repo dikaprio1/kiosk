@@ -1,5 +1,5 @@
 public class MenuItem {
-    private int productNum;
+    private final int productNum;
     private String name;
     private Double price;
     private String menu;
@@ -9,6 +9,10 @@ public class MenuItem {
         this.name = name;
         this.price = price;
         this.menu = menu;
+    }
+
+    public int getProductNum() {
+        return productNum;
     }
 
     public String getName() {
@@ -39,4 +43,5 @@ public class MenuItem {
     public String toString() {
         return "이름: " + name + ", 가격: " + price+ ", 메뉴설명: " + menu;
     }
+
 }
