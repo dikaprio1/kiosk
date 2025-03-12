@@ -22,7 +22,7 @@ public enum Discount {
         Discount[] discounts = values();
         return discounts.length;
     }
-    public static Number onediscounts(int input) {
+    public static Number selectOneDiscounts(int input) {
         Discount[] discounts = values();
         return discounts[input-1].symbol;
     }
