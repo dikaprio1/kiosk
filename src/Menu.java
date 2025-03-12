@@ -62,15 +62,18 @@ public class Menu {
     public MenuItem printMenuItem(int input){
            return tmpMenuItems.get(input-1);
     }
+
+    // 장바구니에 담겨있는 음식들 출력
     public void printShoppingCartItems(){
         for(MenuItem i : cartMenuItems){
             System.out.println(i);
         }
     }
+    //장바구니에 담겨있는 음식들의 값의 합 계산
     public Double shoppingCartItemsPrice(){
-        Double sum = 0.0;
+        double sum=0.0;
         for(MenuItem i : cartMenuItems){
-            sum += i.getPrice();
+            sum += i.getPrice().doubleValue();
         }
         return sum;
     }

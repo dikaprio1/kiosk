@@ -2,12 +2,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Kiosk {
-    public Menu addmenulist(){
+    public Menu addMenuList(){
         Menu menu = new Menu();
-        menu.addMenuItem(new MenuItem(1,"불고기햄버거", 6.0,"맛있는 불고기 햄버거"));
-        menu.addMenuItem(new MenuItem(2,"후라이드 치킨", 7.0,"맛있는 후라이드 치킨"));
-        menu.addMenuItem(new MenuItem(3,"콜라", 3.0,"마시는 콜라"));
-        menu.addMenuItem(new MenuItem(3,"사이다", 3.0,"마시는 사이다"));
+        menu.addMenuItem(new MenuItem(1,"불고기햄버거", 6,"맛있는 불고기 햄버거"));
+        menu.addMenuItem(new MenuItem(2,"후라이드 치킨", 7.2,"맛있는 후라이드 치킨"));
+        menu.addMenuItem(new MenuItem(3,"콜라", 3,"마시는 콜라"));
+        menu.addMenuItem(new MenuItem(3,"사이다", 3.1,"마시는 사이다"));
         menu.addMenuCategory(new Category(1,"햄버거"));
         menu.addMenuCategory(new Category(2,"치킨"));
         menu.addMenuCategory(new Category(3,"음료"));
@@ -15,15 +15,15 @@ public class Kiosk {
     }
 
     public void start(Menu menu){
-        firstroop :while(true) {
+        firstRoop:while(true) {
             menu.getTmpMenuItems().clear();
             Scanner sc = new Scanner(System.in);
             System.out.println("[MAIN MENU]");
             menu.printAllMenuCategory();
             System.out.println("0. 종료");
             System.out.println("원하는 메뉴 번호 입력 :");
-            int input = 0;
-            int input2 = 0;
+            int input;
+            int input2;
             try {
                 input = sc.nextInt();
                 if(input == 0){
@@ -37,6 +37,9 @@ public class Kiosk {
                 }else if(menu.getMenuCategory().isEmpty()){
                     System.out.println("카테고리가 없습니다.");
                     break;
+                }else if(input < 0){
+                    System.out.println("지정되어있는 숫자를 입력해주세요");
+                    continue;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("지정되어있는 숫자를 입력해주세요");
@@ -57,15 +60,34 @@ public class Kiosk {
                         continue;
                     }
                     if(input2 == 1){
-                        System.out.println("주문이 완료되었습니다 금액은 "+menu.shoppingCartItemsPrice()+"$ 입니다.");
-                        menu.getCartMenuItems().clear();
-                        break firstroop;
+                        while(true){
+                            System.out.println("할인 정보를 입력해주세요");
+                            Discount.printDiscountList();
+                            try {
+                                input2 = sc.nextInt();
+                            } catch (InputMismatchException e) {
+                                System.out.println("지정되어있는 숫자를 입력해주세요");
+                                continue;
+                            }
+                            if(input2 > Discount.discountsLength()){
+                                System.out.println("지정되어있는 숫자를 입력해주세요");
+                                continue;
+                            }else if(input2 < 0){
+                                System.out.println("지정되어있는 숫자를 입력해주세요");
+                                continue;
+                            }
+
+                            Order order = new Order();;
+                            System.out.println("주문이 완료되었습니다 금액은 "+
+                                    order.calDiscount(input2,menu.shoppingCartItemsPrice())+"$ 입니다.");
+                            menu.getCartMenuItems().clear();
+                            break firstRoop;
+                        }
                     }else if(input2 == 2){
-                        continue firstroop;
+                        continue firstRoop;
                     }else{
                         System.out.println("지정되어있는 숫자를 입력해주세요");
                     }
-
                 }
             } else if (input == menu.getMenuCategory().size()+2) {
                 menu.getCartMenuItems().clear();
@@ -74,8 +96,7 @@ public class Kiosk {
             while(true){
                     menu.getTmpMenuItems().clear();
                     menu.printAllMenuItem(input);
-                    MenuItem m = null;
-                    input2 = 0;
+                    MenuItem m;
                     try {
                          input2 = sc.nextInt();
                     } catch (InputMismatchException e) {
@@ -83,7 +104,10 @@ public class Kiosk {
                         continue;
                     }
                     if(input2 == 0){
-                        continue firstroop;
+                        continue firstRoop;
+                    }else if(input2 < 0){
+                        System.out.println("지정되어있는 숫자를 입력해주세요");
+                        continue;
                     }
                     try{
                         m = menu.printMenuItem(input2);
@@ -95,7 +119,6 @@ public class Kiosk {
                    while(true){
                        System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
                        System.out.println("1. 추가       2. 취소");
-                       input2 = 0;
                        try {
                            input2 = sc.nextInt();
                        } catch (InputMismatchException e) {
@@ -105,9 +128,9 @@ public class Kiosk {
                        if(input2 == 1){
                            menu.addCartMenuItems(m);
                            System.out.println(m.getName()+"가(이) 장바구니에 추가되었습니다.");
-                           continue firstroop;
+                           continue firstRoop;
                        }else if(input2 == 2){
-                           continue firstroop;
+                           continue firstRoop;
                        }else{
                            System.out.println("지정되어있는 숫자를 입력해주세요");
                        }
