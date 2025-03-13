@@ -1,5 +1,7 @@
 public class Category {
 
+    //대분류 음식 정의
+
     private String name;
     private final int category;
 
