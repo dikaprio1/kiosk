@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Menu {
 
@@ -43,20 +44,54 @@ public class Menu {
             System.out.println(menuCategory.size() + 2 + ". Cancel(장바구니 초기화)");
         }
     }
-    //선택된 대분류의 모든 소분류 출력 ------------------------------------------------------------
-    public void printAllMenuItem(int input){
-            int j = 1;
-            for(int i=0;i<menuItems.size();i++){
-                if(input == menuItems.get(i).getProductNum()){
-                    if(j==1){
-                        System.out.println("["+menuCategory.get(i).getName()+" MENU]");
-                    }
-                    System.out.println(j+". "+menuItems.get(i));
-                    addTmpMenuItems(menuItems.get(i));
-                    j++;
-                }
-            }
+//    //선택된 대분류의 모든 소분류 출력 ------------------------------------------------------------
+//    public void printAllMenuItem(int input){
+//            int j = 1;
+//            for(int i=0;i<menuItems.size();i++){
+//                if(input == menuItems.get(i).getProductNum()){
+//                    if(j==1){
+//                        System.out.println("["+menuCategory.get(i).getName()+" MENU]");
+//                    }
+//                    System.out.println(j+". "+menuItems.get(i));
+//                    addTmpMenuItems(menuItems.get(i));
+//                    j++;
+//                }
+//            }
+//        System.out.println("0. 뒤로가기");
+//    }
+    //선택된 대분류의 모든 소분류 출력(스트림)------------------------------------------------------------
+    public void printAllMenuItemStream(int input){
+        List<MenuItem> filteredItems = menuItems.stream()
+                .filter(item -> item.getProductNum() == input)
+                .toList();
+        if(!filteredItems.isEmpty()){
+            AtomicInteger j = new AtomicInteger(1);
+            System.out.println("["+menuCategory.get(menuItems.indexOf(filteredItems.get(0))).getName()+" MENU]");
+            filteredItems.forEach(item ->{
+                System.out.println(j.getAndIncrement() +". "+item);
+                addTmpMenuItems(item);
+            });
+        }
         System.out.println("0. 뒤로가기");
+        System.out.println("원하는 메뉴 선택 : ");
+    }
+//    //장바구니에서 선택된 음식 제거------------------------------------------------------------
+//    public void removeMenuItemCart(int input){
+//        if(!cartMenuItems.isEmpty()){
+//            System.out.println(cartMenuItems.get(input-1).getName()+" 메뉴를 제외했습니다");
+//            cartMenuItems.remove(input-1);
+//        }
+//    }
+    //장바구니에서 선택된 음식 제거(스트림)------------------------------------------------------------
+    public void removeMenuItemCartStream(int input) {
+        if (!cartMenuItems.isEmpty() && input > 0 && input <= cartMenuItems.size()) {
+            String removedItemName = cartMenuItems.get(input - 1).getName();
+            System.out.println(removedItemName + " 메뉴를 제외했습니다");
+
+            cartMenuItems = cartMenuItems.stream()
+                    .filter(item -> !item.equals(cartMenuItems.get(input - 1))) // 선택한 항목 제외
+                    .toList(); // 새로운 리스트로 갱신
+        }
     }
     //선택된 소분류 출력 ------------------------------------------------------------
     public MenuItem printMenuItem(int input){
@@ -65,8 +100,9 @@ public class Menu {
 
     // 장바구니에 담겨있는 음식들 출력
     public void printShoppingCartItems(){
+        int j = 1;
         for(MenuItem i : cartMenuItems){
-            System.out.println(i);
+            System.out.println(j+++". "+i);
         }
     }
     //장바구니에 담겨있는 음식들의 값의 합 계산

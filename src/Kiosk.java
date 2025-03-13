@@ -46,13 +46,13 @@ public class Kiosk {
                 continue;
             }
             if(input == menu.getMenuCategory().size()+1){
-                while(true){
+               order: while(true){
                     System.out.println("아래와 같이 주문하시겠습니까?");
                     System.out.println("[Orders]");
                     menu.printShoppingCartItems();
                     System.out.println("[Total]");
                     System.out.println(menu.shoppingCartItemsPrice()+"$");
-                    System.out.println("1. 주문       2. 취소(처음화면으로)");
+                    System.out.println("1. 주문    2.  메뉴부분취소    3. 취소(처음화면으로)");
                     try {
                         input2 = sc.nextInt();
                     } catch (InputMismatchException e) {
@@ -69,14 +69,10 @@ public class Kiosk {
                                 System.out.println("지정되어있는 숫자를 입력해주세요");
                                 continue;
                             }
-                            if(input2 > Discount.discountsLength()){
-                                System.out.println("지정되어있는 숫자를 입력해주세요");
-                                continue;
-                            }else if(input2 < 0){
+                            if(input2 > Discount.discountsLength() || input2 < 0){
                                 System.out.println("지정되어있는 숫자를 입력해주세요");
                                 continue;
                             }
-
                             Order<Double> order = new Order<>();
                             System.out.println("주문이 완료되었습니다 금액은 "+
                                     order.calDiscount(input2,menu.shoppingCartItemsPrice())+"$ 입니다.");
@@ -84,6 +80,25 @@ public class Kiosk {
                             break firstRoop;
                         }
                     }else if(input2 == 2){
+                        while(true) {
+                            System.out.println("[Orders]");
+                            menu.printShoppingCartItems();
+                            System.out.println("취소할 메뉴를 선택해주세요.");
+                            try {
+                                input2 = sc.nextInt();
+                            } catch (InputMismatchException e) {
+                                System.out.println("지정되어있는 숫자를 입력해주세요");
+                                continue;
+                            }
+                            if(input2 > menu.getCartMenuItems().size() || input2 < 0){
+                                System.out.println("지정되어있는 숫자를 입력해주세요");
+                                continue;
+                            }
+                            menu.removeMenuItemCartStream(input2);
+                            continue order;
+                        }
+
+                    }else if(input2 == 3){
                         continue firstRoop;
                     }else{
                         System.out.println("지정되어있는 숫자를 입력해주세요");
@@ -95,7 +110,7 @@ public class Kiosk {
             }
             while(true){
                     menu.getTmpMenuItems().clear();
-                    menu.printAllMenuItem(input);
+                    menu.printAllMenuItemStream(input);
                     MenuItem m;
                     try {
                          input2 = sc.nextInt();
