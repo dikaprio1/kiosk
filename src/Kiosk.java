@@ -2,6 +2,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Kiosk {
+
+    // 기본적인 메뉴들 추가
     public Menu addMenuList(){
         Menu menu = new Menu();
         menu.addMenuItem(new MenuItem(1,"불고기햄버거", 6,"맛있는 불고기 햄버거"));
@@ -13,7 +15,7 @@ public class Kiosk {
         menu.addMenuCategory(new Category(3,"음료"));
         return menu;
     }
-
+    // 키오스크 시작
     public void start(Menu menu){
         firstRoop:while(true) {
             menu.getTmpMenuItems().clear();
@@ -52,7 +54,7 @@ public class Kiosk {
                     menu.printShoppingCartItems();
                     System.out.println("[Total]");
                     System.out.println(menu.shoppingCartItemsPrice()+"$");
-                    System.out.println("1. 주문    2.  메뉴부분취소    3. 취소(처음화면으로)");
+                    System.out.println("1. 주문    2.  메뉴부분취소    3. 메뉴추가   4. 모든주문취소(처음화면으로)");
                     try {
                         input2 = sc.nextInt();
                     } catch (InputMismatchException e) {
@@ -99,6 +101,10 @@ public class Kiosk {
                         }
 
                     }else if(input2 == 3){
+                        continue firstRoop;
+                    }
+                    else if(input2 == 4) {
+                        menu.getCartMenuItems().clear();
                         continue firstRoop;
                     }else{
                         System.out.println("지정되어있는 숫자를 입력해주세요");

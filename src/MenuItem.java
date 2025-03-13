@@ -1,4 +1,7 @@
 public class MenuItem {
+
+    //소분류 음식 정의
+
     private final int productNum;
     private String name;
     private Number price;
