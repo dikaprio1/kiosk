@@ -7,13 +7,13 @@
 ## 프로젝트 구조
 
 /src
- Category.java      # 카테고리 관리
- Discount.java      # 할인 로직
- Kiosk.java         # 키오스크 핵심 로직
- Main.java          # 메인 실행 파일
- Menu.java          # 메뉴 관리
- MenuItem.java      # 개별 메뉴 아이템
- Order.java         # 주문 처리 로직
+- Category.java      # 카테고리 관리
+- Discount.java      # 할인 로직
+- Kiosk.java         # 키오스크 핵심 로직
+- Main.java          # 메인 실행 파일
+- Menu.java          # 메뉴 관리
+- MenuItem.java      # 개별 메뉴 아이템
+- Order.java         # 주문 처리 로직
 
 
 ## 설치 및 실행 방법
