@@ -77,7 +77,7 @@ public class Kiosk {
                                 continue;
                             }
 
-                            Order order = new Order();;
+                            Order<Double> order = new Order<>();
                             System.out.println("주문이 완료되었습니다 금액은 "+
                                     order.calDiscount(input2,menu.shoppingCartItemsPrice())+"$ 입니다.");
                             menu.getCartMenuItems().clear();
