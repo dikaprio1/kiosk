@@ -1,10 +1,10 @@
 public class MenuItem {
     private final int productNum;
     private String name;
-    private Double price;
+    private Number price;
     private String menu;
 
-    public MenuItem(int productNum,String name,Double price,String menu){
+    public MenuItem(int productNum,String name,Number price,String menu){
         this.productNum = productNum;
         this.name = name;
         this.price = price;
@@ -23,11 +23,11 @@ public class MenuItem {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public Number getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Number price) {
         this.price = price;
     }
 
