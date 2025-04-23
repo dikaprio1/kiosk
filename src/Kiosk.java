@@ -7,7 +7,7 @@ public class Kiosk {
     public Menu addMenuList(){
         Menu menu02 = new Menu();
         menu02.addMenuItem(new MenuItem(1,"불고기햄버거", 6,"맛있는 불고기 햄버거"));
-        menu02.addMenuItem(new MenuItem(2,"후라이드 치킨", 7.2,"맛있는 후라이드 치킨"));
+        menu02.addMenuItem(new MenuItem(2," 치킨", 7.2,"맛있는 후라이드 치킨"));
         menu02.addMenuItem(new MenuItem(3,"콜라", 3,"마시는 콜라"));
         menu02.addMenuItem(new MenuItem(3,"사이다", 3.1,"마시는 사이다"));
         menu02.addMenuCategory(new Category(1,"햄버거"));
@@ -17,8 +17,8 @@ public class Kiosk {
     }
     public Menu addMenuList2(){
         Menu menu03 = new Menu();
-        menu03.addMenuItem(new MenuItem(1,"불고기햄버거", 6,"맛있는 불고기 햄버거"));
-        menu03.addMenuItem(new MenuItem(2,"후라이드 치킨", 7.2,"맛있는 후라이드 치킨"));
+        menu03.addMenuItem(new MenuItem(1,"불불불", 6,"맛있는 불고기 햄버거"));
+        menu03.addMenuItem(new MenuItem(2," 치킨", 7.2,"맛있는 후라이드 치킨"));
         menu03.addMenuItem(new MenuItem(3,"콜라", 3,"마시는 콜라"));
         menu03.addMenuItem(new MenuItem(3,"사이다", 3.1,"마시는 사이다"));
         menu03.addMenuCategory(new Category(1,"햄버거"));
