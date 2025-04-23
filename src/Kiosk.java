@@ -5,15 +5,26 @@ public class Kiosk {
 
     // 기본적인 메뉴들 추가
     public Menu addMenuList(){
-        Menu menu = new Menu();
-        menu.addMenuItem(new MenuItem(1,"불고기햄버거", 6,"맛있는 불고기 햄버거"));
-        menu.addMenuItem(new MenuItem(2,"후라이드 치킨", 7.2,"맛있는 후라이드 치킨"));
-        menu.addMenuItem(new MenuItem(3,"콜라", 3,"마시는 콜라"));
-        menu.addMenuItem(new MenuItem(3,"사이다", 3.1,"마시는 사이다"));
-        menu.addMenuCategory(new Category(1,"햄버거"));
-        menu.addMenuCategory(new Category(2,"치킨"));
-        menu.addMenuCategory(new Category(3,"음료"));
-        return menu;
+        Menu menu02 = new Menu();
+        menu02.addMenuItem(new MenuItem(1,"불고기햄버거", 6,"맛있는 불고기 햄버거"));
+        menu02.addMenuItem(new MenuItem(2,"후라이드 치킨", 7.2,"맛있는 후라이드 치킨"));
+        menu02.addMenuItem(new MenuItem(3,"콜라", 3,"마시는 콜라"));
+        menu02.addMenuItem(new MenuItem(3,"사이다", 3.1,"마시는 사이다"));
+        menu02.addMenuCategory(new Category(1,"햄버거"));
+        menu02.addMenuCategory(new Category(2,"치킨"));
+        menu02.addMenuCategory(new Category(3,"음료"));
+        return menu02;
+    }
+    public Menu addMenuList2(){
+        Menu menu03 = new Menu();
+        menu03.addMenuItem(new MenuItem(1,"불고기햄버거", 6,"맛있는 불고기 햄버거"));
+        menu03.addMenuItem(new MenuItem(2,"후라이드 치킨", 7.2,"맛있는 후라이드 치킨"));
+        menu03.addMenuItem(new MenuItem(3,"콜라", 3,"마시는 콜라"));
+        menu03.addMenuItem(new MenuItem(3,"사이다", 3.1,"마시는 사이다"));
+        menu03.addMenuCategory(new Category(1,"햄버거"));
+        menu03.addMenuCategory(new Category(2,"치킨"));
+        menu03.addMenuCategory(new Category(3,"음료"));
+        return menu03;
     }
     // 키오스크 시작
     public void start(Menu menu){
