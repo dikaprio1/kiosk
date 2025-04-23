@@ -7,7 +7,7 @@ public class Kiosk {
     public Menu addMenuList(){
         Menu menu = new Menu();
         menu.addMenuItem(new MenuItem(1,"불고기햄버거", 6,"맛있는 불고기 햄버거"));
-        menu.addMenuItem(new MenuItem(2,"후라이드 치킨", 7.2,"맛있는 후라이드 치킨"));
+        menu.addMenuItem(new MenuItem(2,"후라이드 치킨충돌나라 제발", 7.2,"맛있는 후라이드 치킨"));
         menu.addMenuItem(new MenuItem(3,"콜라", 3,"마시는 콜라"));
         menu.addMenuItem(new MenuItem(3,"사이다", 3.1,"마시는 사이다"));
         menu.addMenuCategory(new Category(1,"햄버거"));
