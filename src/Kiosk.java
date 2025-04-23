@@ -6,7 +6,7 @@ public class Kiosk {
     // 기본적인 메뉴들 추가
     public Menu addMenuList(){
         Menu menu02 = new Menu();
-        menu02.addMenuItem(new MenuItem(1,"불고기햄버testtest거", 6,"맛있는 불고기 햄버거"));
+        menu02.addMenuItem(new MenuItem(1,"불고기햄버12339거", 6,"맛있는 불고기 햄버거"));
         menu02.addMenuItem(new MenuItem(2," 치킨", 7.2,"맛있는 후라이드 치킨"));
         menu02.addMenuItem(new MenuItem(3,"콜라", 3,"마시는 콜라"));
         menu02.addMenuItem(new MenuItem(3,"사이다", 3.1,"마시는 사이다"));
