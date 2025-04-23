@@ -64,6 +64,7 @@ public class Kiosk {
                     if(input2 == 1){
                         while(true){
                             System.out.println("할인 정보를 입력해주세요");
+                            System.out.println("할인 정보를 입력해주세요");
                             Discount.printDiscountList();
                             try {
                                 input2 = sc.nextInt();
