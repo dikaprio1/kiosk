@@ -10,7 +10,7 @@ public class Kiosk {
         menu.addMenuItem(new MenuItem(2,"후라이드 치킨충돌나라 제발", 7.2,"맛있는 후라이드 치킨"));
         menu.addMenuItem(new MenuItem(3,"콜라", 3,"마시는 콜라"));
         menu.addMenuItem(new MenuItem(3,"사이다", 3.1,"마시는 사이다"));
-        menu.addMenuCategory(new Category(1,"햄버거"));
+        menu.addMenuCategory(new Category(1,"햄ddddd버거"));
         menu.addMenuCategory(new Category(2,"치킨"));
         menu.addMenuCategory(new Category(3,"음료"));
         return menu;
